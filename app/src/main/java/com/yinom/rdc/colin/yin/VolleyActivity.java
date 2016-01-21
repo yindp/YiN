@@ -1,5 +1,6 @@
 package com.yinom.rdc.colin.yin;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,24 +23,27 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VolleyActivity extends AppCompatActivity implements View.OnClickListener {
+public class VolleyActivity extends Activity implements View.OnClickListener {
     EditText ettPhoneNumber;
     TextView ttvNotice;
+    Button btnVolleyQuery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volley);
 
-        findViewById(R.id.btnTransferVolley).setOnClickListener(this);
+        btnVolleyQuery=(Button) findViewById(R.id.btnVolleyQuery);
         ettPhoneNumber = (EditText) findViewById(R.id.ettVolleyPhoneNumber);
         ttvNotice = (TextView) findViewById(R.id.ttvVolleyNotice);
+
+        btnVolleyQuery.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnTransferVolley:
+            case R.id.btnVolleyQuery:
                 StringRequest_Get();
                 break;
         }

@@ -19,4 +19,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textAllCaps="false"/>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Load Image"
+        android:id="@+id/btnLoadImage"
+        android:layout_below="@+id/btnTransferVolley"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"/>
 </RelativeLayout>

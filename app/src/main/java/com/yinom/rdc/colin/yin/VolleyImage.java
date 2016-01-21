@@ -7,10 +7,17 @@ import android.widget.ImageView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.NetworkImageView;
+import com.yinom.rdc.colin.yin.network.MyApplication;
 
+/**
+ * 实现网络图片的加载
+ */
 public class VolleyImage extends AppCompatActivity {
     private ImageView iv_img;
+    private NetworkImageView networkImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +26,10 @@ public class VolleyImage extends AppCompatActivity {
         initView();
         String url = "https://www.baidu.com/img/bdlogo.png";
 
-        ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
+        /**
+         * 第一种实现方式
+         */
+        /*ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
                 iv_img.setImageBitmap(response);
@@ -28,13 +38,32 @@ public class VolleyImage extends AppCompatActivity {
                 .ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                iv_img.setBackgroundResource(R.drawable.ICON);
+                iv_img.setBackgroundResource(R.drawable.icon);
             }
         });
+        imageRequest.setTag("ImageRequest_Get");
+        MyApplication.getHttpQueue().add(imageRequest);*/
+
+        /**
+         * 第二种实现方式
+         */
+        /*
+        ImageLoader loader=new ImageLoader(MyApplication.getHttpQueue(),new BitmapCache());
+        ImageLoader.ImageListener listener=ImageLoader.getImageListener(iv_img,R.drawable.icon,R.drawable.icon);
+        loader.get(url,listener);*/
+
+        /**
+         * 第三种实现方式
+         */
+        ImageLoader loader = new ImageLoader(MyApplication.getHttpQueue(), new BitmapCache());
+        networkImageView.setDefaultImageResId(R.drawable.icon);
+        networkImageView.setErrorImageResId(R.drawable.icon);
+        networkImageView.setImageUrl(url, loader);
     }
 
     private void initView() {
         iv_img = (ImageView) this.findViewById(R.id.iv_img);
+        networkImageView = (NetworkImageView) this.findViewById(R.id.networkImageView);
     }
 }
 

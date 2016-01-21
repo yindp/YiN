@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.btnTransferVolley).setOnClickListener(this);
+        findViewById(R.id.btnLoadImage).setOnClickListener(this);
     }
 
     @Override
@@ -21,6 +22,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnTransferVolley:
                 Intent volleyIntent = new Intent(MainActivity.this, VolleyActivity.class);
                 startActivity(volleyIntent);
+                break;
+            case R.id.btnLoadImage:
+                Intent imageIntent = new Intent(MainActivity.this, VolleyImage.class);
+                startActivity(imageIntent);
                 break;
         }
     }
