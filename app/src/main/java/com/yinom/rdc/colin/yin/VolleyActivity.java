@@ -94,6 +94,8 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
                 return hashMap;
             }
         };
+        stringRequest.setTag("StringRequest_Post");
+        MyApplication.getHttpQueue().add(stringRequest);
     }
 
     /**
@@ -115,6 +117,8 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
                 ttvNotice.setText(error.toString());
             }
         });
+        jsonObjectRequest.setTag("JsonObjectRequest_Get");
+        MyApplication.getHttpQueue().add(jsonObjectRequest);
     }
 
     /**
@@ -143,6 +147,8 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
                 return hashMap;
             }
         };
+        jsonObjectRequest.setTag("JsonObjectRequest_Post");
+        MyApplication.getHttpQueue().add(jsonObjectRequest);
     }
 
     /**
@@ -154,16 +160,18 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
                 "&key=1b27ee246b8392716f924692cc241d25";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, new
                 Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                ttvNotice.setText(response.toString());
-            }
-        }, new Response.ErrorListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        ttvNotice.setText(response.toString());
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 ttvNotice.setText(error.toString());
             }
         });
+        jsonArrayRequest.setTag("JsonArrayRequest_Get");
+        MyApplication.getHttpQueue().add(jsonArrayRequest);
     }
 
     /**
@@ -171,8 +179,9 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
      * POST method
      */
     private void JsonArrayRequest_Post() {
-        String url="http://apis.juhe.cn/mobile/get";
-        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.POST, url, new Response.Listener<JSONArray>() {
+        String url = "http://apis.juhe.cn/mobile/get";
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, new
+                Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 ttvNotice.setText(response.toString());
@@ -182,7 +191,7 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
             public void onErrorResponse(VolleyError error) {
                 ttvNotice.setText(error.toString());
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> hashMap = new HashMap<String, String>();
@@ -191,5 +200,16 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
                 return hashMap;
             }
         };
+        jsonArrayRequest.setTag("JsonArrayRequest_Post");
+        MyApplication.getHttpQueue().add(jsonArrayRequest);
+    }
+
+    /**
+     * Volley与Activity生命周期关联
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MyApplication.getHttpQueue().cancelAll("StringRequest_Get");
     }
 }
