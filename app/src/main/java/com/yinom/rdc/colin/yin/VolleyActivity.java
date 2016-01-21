@@ -69,6 +69,26 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     /**
+     * 使用二次封装对 Volley String Request GET method改造
+     */
+    private void stringRequest_Get() {
+        String url = "http://apis.juhe.cn/mobile/get?phone=" + ettPhoneNumber.getText().toString() +
+                "&key=1b27ee246b8392716f924692cc241d25";
+        VolleyRequest.StringRequestGet(this, url, "StringRequest_Get", new VolleyInterface(this,
+                VolleyInterface.mListener, VolleyInterface.mErrorListener) {
+            @Override
+            public void onMySuccess(String result) {
+                ttvNotice.setText(result);
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                ttvNotice.setText(error.toString());
+            }
+        });
+    }
+
+    /**
      * Volley StringRequest
      * POST method
      */
@@ -182,11 +202,11 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
         String url = "http://apis.juhe.cn/mobile/get";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, new
                 Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                ttvNotice.setText(response.toString());
-            }
-        }, new Response.ErrorListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        ttvNotice.setText(response.toString());
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 ttvNotice.setText(error.toString());
