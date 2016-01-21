@@ -68,7 +68,7 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
 
     /**
      * Volley StringRequest
-     *  POST method
+     * POST method
      */
     private void StringRequestPost() {
         String url = "http://apis.juhe.cn/mobile/get";
@@ -113,5 +113,33 @@ public class VolleyActivity extends AppCompatActivity implements View.OnClickLis
                 ttvNotice.setText(error.toString());
             }
         });
+    }
+
+    /**
+     * Volley JsonObjectRequest
+     * POST method
+     */
+    private void JsonObjectPost() {
+        String url = "http://apis.juhe.cn/mobile/get";
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new
+                Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        ttvNotice.setText(response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                ttvNotice.setText(error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("phone", ettPhoneNumber.getText().toString());
+                hashMap.put("key", "1b27ee246b8392716f924692cc241d25");
+                return hashMap;
+            }
+        };
     }
 }
