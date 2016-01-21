@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">YiN</string>
+    <string name="btnTransferVolley">Volley</string>
+    <string name="ttvVolleyNotice">Notice</string>
+    <string name="btnVolleyQuery">Query</string>
+    <string name="ttvVolleyTitle">号码归属都查询</string>
+</resources>
