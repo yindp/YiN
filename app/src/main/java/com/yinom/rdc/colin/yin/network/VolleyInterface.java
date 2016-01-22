@@ -1,13 +1,11 @@
-package com.yinom.rdc.colin.yin;
+package com.yinom.rdc.colin.yin.network;
 
 import android.content.Context;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-/**
- * Created by Colin on 1/21/2016.
- */
+
 public abstract class VolleyInterface {
     public Context mContext;
     public static Response.Listener<String> mListener;

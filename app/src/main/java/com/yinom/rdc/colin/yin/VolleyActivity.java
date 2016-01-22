@@ -1,7 +1,6 @@
 package com.yinom.rdc.colin.yin;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +15,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.yinom.rdc.colin.yin.network.MyApplication;
+import com.yinom.rdc.colin.yin.network.VolleyInterface;
+import com.yinom.rdc.colin.yin.network.VolleyRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -112,7 +113,7 @@ public class VolleyActivity extends Activity implements View.OnClickListener {
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> hashMap = new HashMap<String, String>();
+                Map<String, String> hashMap = new HashMap<>();
                 hashMap.put("phone", ettPhoneNumber.getText().toString());
                 hashMap.put("key", "1b27ee246b8392716f924692cc241d25");
                 return hashMap;
@@ -165,7 +166,7 @@ public class VolleyActivity extends Activity implements View.OnClickListener {
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> hashMap = new HashMap<String, String>();
+                Map<String, String> hashMap = new HashMap<>();
                 hashMap.put("phone", ettPhoneNumber.getText().toString());
                 hashMap.put("key", "1b27ee246b8392716f924692cc241d25");
                 return hashMap;
@@ -218,7 +219,7 @@ public class VolleyActivity extends Activity implements View.OnClickListener {
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> hashMap = new HashMap<String, String>();
+                Map<String, String> hashMap = new HashMap<>();
                 hashMap.put("phone", ettPhoneNumber.getText().toString());
                 hashMap.put("key", "1b27ee246b8392716f924692cc241d25");
                 return hashMap;

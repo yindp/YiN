@@ -1,16 +1,13 @@
 package com.yinom.rdc.colin.yin;
 
-import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.yinom.rdc.colin.yin.network.MyApplication;
+import com.yinom.rdc.colin.yin.util.BitmapCache;
 
 /**
  * 实现网络图片的加载

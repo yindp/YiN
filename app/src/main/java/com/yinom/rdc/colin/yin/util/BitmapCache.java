@@ -1,4 +1,4 @@
-package com.yinom.rdc.colin.yin;
+package com.yinom.rdc.colin.yin.util;
 
 import android.graphics.Bitmap;
 import android.util.LruCache;
@@ -6,9 +6,7 @@ import android.util.LruCache;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
 
-/**
- * Created by Colin on 0021/1/21/2016.
- */
+
 public class BitmapCache implements ImageCache {
 
     public LruCache<String, Bitmap> cache;
