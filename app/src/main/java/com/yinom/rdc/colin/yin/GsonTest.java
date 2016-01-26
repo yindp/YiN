@@ -16,7 +16,7 @@ public class GsonTest {
         String json=gson.toJson(stu);
         System.out.println(json);*/
 
-      /*  List<Student> stus=new ArrayList<Strudent>();
+      /*  List<Student> stus=new ArrayList<Student>();
         stus.add(new Student(1,"lisi",22));
         stus.add(new Student(2,"lihua",25));
         String json=gson.toJson(stus);
